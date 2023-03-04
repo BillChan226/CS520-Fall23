@@ -1,0 +1,158 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 1},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\title{Homework 1}
+
+\input{preamble.tex}
+\title{Homework}
+
+
+
+\begin{document}
+\maketitle
+
+Please answer the following questions in complete sentences in a clearly
+prepared manuscript and submit the solution by the due date on
+Gradescope.
+
+Remember that this is a graduate class. There may be elements of the
+problem statements that require you to fill in appropriate assumptions.
+You are also responsible for determining what evidence to include. An
+answer alone is rarely sufficient, but neither is an overly verbose
+description required. Use your judgement to focus your discussion on the
+most interesting pieces. The answer to ``should I include `something' in
+my solution?'' will almost always be: Yes, if you think it helps support
+your answer.
+
+\hypertarget{problem-0-list-your-collaborators}{%
+\subsection{Problem 0: List your
+collaborators}\label{problem-0-list-your-collaborators}}
+
+Please identify anyone, whether or not they are in the class, with whom
+you discussed your homework. This problem is worth 1 point, but on a
+multiplicative scale.
+
+\hypertarget{problem-1-some-quick-simple-theory}{%
+\subsection{Problem 1: Some quick, simple
+theory}\label{problem-1-some-quick-simple-theory}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What is \(1/\sqrt(x)\) when \(x = 10^9\)? What is the limit of the
+  sequence \(1/\sqrt(x)\) as \(x \to \infty\)? What type of convergence
+  is this?
+\item
+  Show, using the definition, that the sequence \(1 + k^{-k}\) converges
+  superlinearly to \(1\).
+\item
+  Suppose we have a sequence \(x_{k+1} = \sqrt{x_k}\). Show that this
+  sequence converges for all positive inputs \(\vx_0\)\_. What is the
+  the rate of convergence.
+\item
+  Let \(z = 9\). Consider the sequence
+  \[ x_{k+1} = (1/2)  x_k (3 - z x_k^2), x_0 = 1/2. \] Show that this
+  converges and give the convergence type (algebra, linear, quadratic,
+  etc.)
+\item
+  (A little more interesting, note that I haven't yet worked out the
+  answer to this one; it may be well-known in other areas, etc. Don't
+  feel obliged to compute a full solution, but for full points you must
+  show your investigation. ) Suppose we have a sequence
+  \(x_{k+1} = |\log{x_k}|\). Does this converge for any input? For all
+  inputs? For some? What else can you say about it? Are there limit
+  points?
+\end{enumerate}
+
+\hypertarget{problem-2-angled-raptors}{%
+\subsection{Problem 2: Angled raptors}\label{problem-2-angled-raptors}}
+
+Mr.~Munroe (the xkcd author) decided that running in a single direction
+was unrealistic. Your new problem is to solve the generalized raptor
+problem where you can turn twice. Once at 0.25 seconds. A second time at
+0.75 seconds. Otherwise the problem is the same.
+
+\begin{itemize}
+\tightlist
+\item
+  Ignore all acceleration, like we did in class.
+\item
+  The slow raptor runs at 10 m/s
+\item
+  The fast raptors run at 15 m/s
+\item
+  You run at 6 m/s
+\item
+  A raptor will catch you if you are within 20 centimeters.
+\item
+  You can turn instantaneously.
+\end{itemize}
+
+There are three parts.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Modify the the Raptor chase example function to compute the survival
+  time of a human in a raptor problem where you switch direction at 0.25
+  seconds and 0.75 seconds. Show your modified function, and show the
+  survival time when running directly at the slow raptor (up to time
+  0.25) and then reversing your direction and running away from it.
+\item
+  Utilize a grid-search strategy to determine the best angles for the
+  human to run to maximize the survival time. Show the angles.
+\item
+  Discuss the major challenge for solving this problem with the current
+  strategy if we added a fourth angle at 0.5 seconds. (Or do so!) And a
+  fifth angle at 0.75 seconds. (Or if you are feeling ambitious, solve
+  these and see where you start running into trouble and discuss why
+  that is!
+\end{enumerate}
+
+\end{document}

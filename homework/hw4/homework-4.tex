@@ -1,0 +1,161 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 4},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\title{Homework 4}
+
+\input{preamble.tex}
+\title{Homework}
+
+
+
+\begin{document}
+\maketitle
+
+Please answer the following questions in complete sentences in a clearly
+prepared manuscript and submit the solution by the due date on
+Gradescope.
+
+Remember that this is a graduate class. There may be elements of the
+problem statements that require you to fill in appropriate assumptions.
+You are also responsible for determining what evidence to include. An
+answer alone is rarely sufficient, but neither is an overly verbose
+description required. Use your judgement to focus your discussion on the
+most interesting pieces. The answer to ``should I include `something' in
+my solution?'' will almost always be: Yes, if you think it helps support
+your answer.
+
+\hypertarget{problem-0-homework-checklist}{%
+\subsection{Problem 0: Homework
+checklist}\label{problem-0-homework-checklist}}
+
+\begin{itemize}
+\item
+  Please identify anyone, whether or not they are in the class, with
+  whom you discussed your homework. This problem is worth 1 point, but
+  on a multiplicative scale.
+\item
+  Make sure you have included your source-code and prepared your
+  solution according to the most recent Piazza note on homework
+  submissions.
+\end{itemize}
+
+\hypertarget{problem-1-log-barrier-terms}{%
+\subsection{Problem 1: Log-barrier
+terms}\label{problem-1-log-barrier-terms}}
+
+The basis of a class of methods known as interior point methods is that
+we can handle non-negativity constraints such as \(\vx \ge 0\) by
+solving a sequence of unconstrained problems where we add the function
+\(b(\vx; \mu) = -\mu \sum_i \log(x_i)\) to the objective. Thus, we
+convert \[ \MINone{}{f(\vx)}{\vx \ge 0} \] into
+\[ \MIN{}{f(\vx) + b(\vx; \mu).} \]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Explain why this idea could work. (Hint: there's a very useful picture
+  you should probably show here!)
+\item
+  Write a matrix expression for the gradient and Hessian of
+  \(f(\vx) + b(\vx; \mu)\) in terms of the gradient vector \(g(\vx)\)
+  and the Hessian matrix \(\mH(\vx)\) of \(f\).
+\item
+  (Open ended) Explain if there is anything special about \(\log\) that
+  makes it especially useful here. For instance, are there other
+  functions that could work and give you the same effect? Would \(\log\)
+  be superior?
+\end{enumerate}
+
+\hypertarget{problem-2-inequality-constraints}{%
+\subsection{Problem 2: Inequality
+constraints}\label{problem-2-inequality-constraints}}
+
+Draw a picture of the feasible region for the constraints:
+\[ \bmat{1 - x_1 - x_2 \\ 1 - x_1 + x_2 \\ 1 + x_1 - x_2 \\ 1 + x_1 + x_2} \ge 0. \]
+
+\hypertarget{problem-3-necessary-and-sufficient-conditions}{%
+\subsection{Problem 3: Necessary and sufficient
+conditions}\label{problem-3-necessary-and-sufficient-conditions}}
+
+Let \(f(\vx) = \frac{1}{2} \vx^T \mQ \vx - \vx^T \vc\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Write down the necessary conditions for the problem:
+  \[ \MINone{}{f(\vx)}{\vx \ge 0}. \]
+\item
+  Write down the sufficient conditions for the same problem.
+\item
+  Consider the two-dimensional case with
+  \[ \mQ = \bmat{2 & 3 \\ 3 & 2} \qquad \vc = \bmat{-1.5 \\ 1.5}. \]
+  Determine the solution to this problem by any means you can, and
+  justify your work.
+\item
+  Produce a Julia or hand illustration of the solution showing the
+  function contours, and gradient. What are the active constraints at
+  the solution? What is the value of \(\lambda\) in
+  \(\mA^T \lambda = \vg\)?
+\item
+  What changes when we set \(\mQ = \bmat{-2 & 3 \\ 3 & -2}\)?
+\end{enumerate}
+
+\hypertarget{problem-4-constraints-can-make-a-non-smooth-problem-smooth.}{%
+\subsection{Problem 4: Constraints can make a non-smooth problem
+smooth.}\label{problem-4-constraints-can-make-a-non-smooth-problem-smooth.}}
+
+Show that
+
+\[ \MIN{}{\sum_i \max (\va_i^T \vx - b_i, -0.5)} \]
+
+can be reformulated as a constrained optimization problem with a
+continuously differentiable objective function and both linear equality
+and inequality constraints.
+
+\end{document}

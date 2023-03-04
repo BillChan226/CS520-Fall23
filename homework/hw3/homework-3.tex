@@ -1,0 +1,173 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 3},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\title{Homework 3}
+
+\input{preamble.tex}
+\title{Homework}
+
+
+
+\begin{document}
+\maketitle
+
+Please answer the following questions in complete sentences in a clearly
+prepared manuscript and submit the solution by the due date on
+Gradescope.
+
+Remember that this is a graduate class. There may be elements of the
+problem statements that require you to fill in appropriate assumptions.
+You are also responsible for determining what evidence to include. An
+answer alone is rarely sufficient, but neither is an overly verbose
+description required. Use your judgement to focus your discussion on the
+most interesting pieces. The answer to ``should I include `something' in
+my solution?'' will almost always be: Yes, if you think it helps support
+your answer.
+
+\hypertarget{problem-0-homework-checklist}{%
+\subsection{Problem 0: Homework
+checklist}\label{problem-0-homework-checklist}}
+
+\begin{itemize}
+\item
+  Please identify anyone, whether or not they are in the class, with
+  whom you discussed your homework. This problem is worth 1 point, but
+  on a multiplicative scale.
+\item
+  Make sure you have included your source-code and prepared your
+  solution according to the most recent Piazza note on homework
+  submissions.
+\end{itemize}
+
+\hypertarget{problem-1-convexity-and-least-squares}{%
+\subsection{Problem 1: Convexity and least
+squares}\label{problem-1-convexity-and-least-squares}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Show that \(f(x) = \| \vb - \mA \vx \|^2\) is a convex function. Feel
+  free to use the result proved on the last homework.
+\item
+  Show that the null-space of a matrix is a convex set. (A convex set
+  satisfies the condition that, for every pair of points in the set, any
+  point on the line joining those points is also in the set.)
+\end{enumerate}
+
+\hypertarget{problem-2-ridge-regression}{%
+\subsection{Problem 2: Ridge
+Regression}\label{problem-2-ridge-regression}}
+
+The Ridge Regression problem is a variant of least squares:
+\[ \MIN{}{\| \vb - \mA \vx\|_2^2 + \lambda \| \vx\|_2^2. } \] This is
+also known as Tikhonov regularization.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Show that this problem always has a unique solution, for \emph{any
+  \(\mA\)} if \(\lambda > 0\), using the theory discussed in class so
+  far.
+
+  \begin{quote}
+  This property is one aspect of the reason that Ridge Regression and
+  used. It is also a common regularization method that can help avoid
+  overfitting in a regression problem.
+  \end{quote}
+\item
+  Use the SVD of \(\mA\) to characterize the solution as a function of
+  \(\lambda\).
+\item
+  What is the solution when \(\lambda \to \infty\)?\\
+  What is the solution when \(\lambda \to 0\).
+\item
+  Give the solutions of the least squares problem using the sports teams
+  data when \(\lambda = 0\) and \(\lambda = \infty\). (Here, you will
+  not need the constraint that the sum of entries is 1.) Any notable
+  differences from the ranking giving in class?
+\item
+  Suppose that you only want to regularize one component of the
+  solution, say, \(x_1\), so that your optimization problem is
+  \[ \MIN{}{\| \vb - \mA \vx\|_2^2 + \lambda x_1^2. } \] Show how to
+  adapt your techniques in this problem to accomplish this goal.
+\end{enumerate}
+
+\hypertarget{problem-3-thinking-about-constraints}{%
+\subsection{Problem 3: Thinking about
+constraints}\label{problem-3-thinking-about-constraints}}
+
+Find the minimizer of \(f(x,y) = x^2 + 2y^2\) where also \(y = 5x + 2\)
+(that is, we have added one linear constraint) and justify, as concisely
+and correctly as you can, that you have found a solution. Do the terms
+local and global minimizer apply? If so, use one of them to describe
+your solution. Furthermore, evaluate the gradient of \(f\) at your
+solution. What is notable about the gradient at your solution in
+comparison with the solution where \(x,y\) have no constraints?
+
+\hypertarget{problem-4-alternate-formulations-of-least-squares}{%
+\subsection{Problem 4: Alternate formulations of Least
+Squares}\label{problem-4-alternate-formulations-of-least-squares}}
+
+Consider the constrained least squares problem:
+\[ \MINone{\vr,\vy}{ \| \vr \|_2 } { \vr = \vb - \mC\vy } \] where
+\(\mC \in \RR^{m \times n}\), \(n \le m\) and rank \(n\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Convert this problem into the standard constrained least squares form.
+\item
+  Form the augmented system from the Lagrangian as we did in class.
+\item
+  Manipulate this problem to arrive at the normal equations for a
+  least-squares problem: \(\mC^T \mC \vy = \mC^T \vb\).\\
+  Discuss any advantages of the systems at intermediate steps.
+\end{enumerate}
+
+\end{document}
